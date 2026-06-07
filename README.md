@@ -1,277 +1,164 @@
-````markdown
-# Sidekick AI – Autonomous AI Task Execution Agent
+# Sidekick AI
 
-## Overview
+### Autonomous AI Task Execution Agent
 
-Sidekick AI is an autonomous AI co-worker designed to perform complex tasks with minimal human intervention. Unlike traditional chatbots that only respond to queries, Sidekick AI can reason, plan, use tools, evaluate its own progress, and iteratively improve its responses until predefined success criteria are met.
-
-The system combines Large Language Models (LLMs), LangGraph workflows, browser automation, web search capabilities, memory management, and external tools to create an intelligent task execution framework.
+Sidekick AI is an autonomous AI agent capable of planning, executing, evaluating, and completing complex tasks with minimal human intervention. The system integrates Large Language Models, web search, browser automation, and external tools to solve multi-step problems efficiently.
 
 ---
 
-## Features
+## Overview
+
+The project is designed to function as an AI co-worker that can independently perform research, gather information, interact with websites, execute code, and generate structured outputs. Unlike conventional chatbots, Sidekick AI continuously evaluates its progress and can refine its responses until predefined objectives are satisfied.
+
+---
+
+## Key Features
 
 ### Autonomous Task Execution
-- Accepts user-defined tasks and objectives.
-- Breaks complex problems into manageable steps.
-- Executes tasks independently.
-- Produces structured final outputs.
 
-### Self-Evaluation Mechanism
-- Evaluates generated responses against success criteria.
-- Detects incomplete or insufficient answers.
-- Iteratively improves responses.
-- Stops only when objectives are satisfied.
+* Accepts user-defined objectives
+* Breaks complex problems into manageable steps
+* Executes tasks independently
+* Produces structured outputs
+
+### Self-Evaluation Framework
+
+* Evaluates generated responses against success criteria
+* Detects incomplete or insufficient answers
+* Iteratively improves responses
+* Stops only when objectives are satisfied
 
 ### Web Search Integration
-- Performs real-time internet searches.
-- Retrieves relevant information from online sources.
-- Supports dynamic information gathering.
+
+* Performs real-time internet searches
+* Retrieves relevant information from online sources
+* Supports dynamic information gathering
 
 ### Browser Automation
-- Automates website interactions using Playwright.
-- Opens webpages.
-- Navigates websites.
-- Extracts information from web pages.
-- Simulates human browsing behavior.
 
-### Wikipedia Integration
-- Retrieves factual information directly from Wikipedia.
-- Supports research-oriented tasks.
+* Automates website interactions using Playwright
+* Opens and navigates webpages
+* Extracts information from websites
+* Simulates user browsing actions
 
-### Python Execution Environment
-- Executes Python code dynamically.
-- Handles calculations and data processing.
-- Supports analytical workflows.
+### Python Execution
 
-### File Management
-- Reads local files.
-- Writes generated outputs.
-- Supports file-based task processing.
+* Performs calculations and data processing
+* Executes Python code dynamically
+* Supports analytical workflows
 
-### Memory Management
-- Maintains conversation state.
-- Tracks task progress.
-- Preserves context across interactions.
+### Knowledge Retrieval
 
-### Push Notifications
-- Sends notifications after task completion.
-- Enables asynchronous task monitoring.
+* Integrates Wikipedia for factual information retrieval
+* Combines multiple information sources for comprehensive answers
 
 ---
 
 ## System Architecture
 
 ```text
-User
- │
- ▼
-Gradio Interface (app.py)
- │
- ▼
-Sidekick Core Agent (sidekick.py)
- │
- ├── Task Planning
- ├── Reasoning Engine
- ├── Memory Management
- ├── Self-Evaluation
- └── Decision Making
- │
- ▼
-Tool Layer (sidekick_tools.py)
- │
- ├── Google Search
- ├── Playwright Browser Automation
- ├── Wikipedia Search
- ├── Python REPL
- ├── File Operations
- └── Push Notifications
- │
- ▼
+User Interface
+      │
+      ▼
+Sidekick Agent
+      │
+ ┌────┼────┐
+ │    │    │
+ ▼    ▼    ▼
+Planning
+Reasoning
+Evaluation
+      │
+      ▼
+Tool Layer
+      │
+ ├── Web Search
+ ├── Browser Automation
+ ├── Wikipedia
+ ├── Python Execution
+ └── File Operations
+      │
+      ▼
 Final Response
-````
-
----
-
-## Project Structure
-
-```text
-project/
-│
-├── app.py
-│   └── Gradio-based user interface
-│
-├── sidekick.py
-│   └── Core autonomous agent logic
-│
-├── sidekick_tools.py
-│   └── Tool integrations and utilities
-│
-├── gradio_test.py
-│   └── Standalone testing interface
-│
-├── requirements.txt
-│   └── Project dependencies
-│
-└── README.md
 ```
 
 ---
 
 ## Workflow
 
-### Step 1: User Input
+1. User submits a task.
+2. The agent analyzes objectives and requirements.
+3. Appropriate tools are selected.
+4. Information is gathered and processed.
+5. The response is evaluated against success criteria.
+6. Additional iterations are performed if necessary.
+7. The final validated output is returned.
 
-The user submits:
+---
 
-* A task
-* Success criteria
+## Technology Stack
 
-Example:
+| Component            | Technology |
+| -------------------- | ---------- |
+| Programming Language | Python     |
+| Agent Framework      | LangGraph  |
+| Language Model       | OpenAI GPT |
+| User Interface       | Gradio     |
+| Browser Automation   | Playwright |
+| Search Engine        | Serper API |
+| Knowledge Source     | Wikipedia  |
+
+---
+
+## Project Structure
 
 ```text
-Task:
-Find the top 5 AI startups in healthcare.
-
-Success Criteria:
-Include company descriptions, funding information, and websites.
+.
+├── app.py
+├── sidekick.py
+├── sidekick_tools.py
+├── gradio_test.py
+├── requirements.txt
+└── README.md
 ```
 
-### Step 2: Planning
+---
 
-The agent analyzes the task and determines:
+## Installation
 
-* Required information
-* Necessary tools
-* Execution strategy
+```bash
+git clone <repository-url>
 
-### Step 3: Tool Execution
+cd sidekick-ai
 
-The agent may:
-
-* Search the web
-* Browse websites
-* Query Wikipedia
-* Execute Python code
-* Read or write files
-
-### Step 4: Evaluation
-
-The evaluator checks:
-
-* Completeness
-* Accuracy
-* Success criteria satisfaction
-
-### Step 5: Iteration
-
-If requirements are not met:
-
-* The agent performs additional actions.
-* Refines the output.
-* Re-evaluates results.
-
-### Step 6: Final Output
-
-The completed response is delivered to the user.
+pip install -r requirements.txt
+```
 
 ---
 
-## Technologies Used
+## Running the Project
 
-### AI & Agent Frameworks
-
-* LangChain
-* LangGraph
-* OpenAI GPT Models
-
-### Frontend
-
-* Gradio
-
-### Browser Automation
-
-* Playwright
-
-### Search & Knowledge Retrieval
-
-* Google Search (Serper API)
-* Wikipedia API
-
-### Programming Language
-
-* Python
-
-### Utilities
-
-* Python REPL
-* File Handling Tools
-* Notification Services
+```bash
+python app.py
+```
 
 ---
 
-## Key Advantages
+## Applications
 
-* Autonomous task completion
-* Multi-step reasoning
-* Tool-augmented intelligence
-* Self-correcting workflow
-* Real-time information retrieval
-* Browser automation capabilities
-* Modular architecture
-* Extensible tool ecosystem
-
----
-
-## Example Use Cases
-
-### Research Assistant
-
-* Market research
-* Competitor analysis
-* Technology exploration
-
-### Data Collection
-
-* Web scraping
-* Information aggregation
-* Online monitoring
-
-### Productivity Automation
-
-* Repetitive web tasks
-* Information gathering
-* Report generation
-
-### Knowledge Retrieval
-
-* Wikipedia lookups
-* Internet research
-* Fact gathering
-
-### Analytical Tasks
-
-* Calculations
-* Data processing
-* Python-based analysis
+* Research Assistance
+* Information Retrieval
+* Competitive Analysis
+* Web Automation
+* Report Generation
+* Productivity Workflows
 
 ---
 
 ## Future Enhancements
 
-* Multi-agent collaboration
-* Long-term memory storage
-* Database integration
-* Advanced document processing
-* RAG-based knowledge retrieval
-* Cloud deployment
-* Multi-modal support
-* Enterprise workflow automation
-
----
-
-## Conclusion
-
-Sidekick AI is an autonomous AI task execution framework that combines reasoning, planning, browser automation, web search, memory, and self-evaluation into a single intelligent system. It acts as a digital co-worker capable of independently executing complex tasks while continuously validating the quality of its results.
-
-```
+* Multi-Agent Collaboration
+* Long-Term Memory
+* Retrieval-Augmented Generation (RAG)
+* Cloud Deployment
+* Multimodal Capabilities
