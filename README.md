@@ -1,4 +1,5 @@
 # Sidekick AI
+## Agentic AI
 
 ### Autonomous AI Task Execution Agent
 
