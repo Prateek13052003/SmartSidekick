@@ -1,11 +1,12 @@
 # Sidekick AI
-## Agentic AI
+
 
 ### Autonomous AI Task Execution Agent
 
 Sidekick AI is an autonomous AI agent capable of planning, executing, evaluating, and completing complex tasks with minimal human intervention. The system integrates Large Language Models, web search, browser automation, and external tools to solve multi-step problems efficiently.
 
 ---
+
 
 ## Overview
 
